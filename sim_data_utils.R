@@ -84,11 +84,11 @@ f_crit <- function(crit, k, alpha, rho_mat){
 
 ##---------------------------------------------------------------------------------------------
 
-find_crit <- function(rho_mat, k = c(0.5, 0.5), alpha = 0.025){
+find_crit <- function(rho_mat, k = c(0.5, 0.5), alpha = 0.025, crit_interval = c(0.8, 1)){
   
   if (dim(rho_mat)[1] != length(k)) stop("Dimensions of rho_mat and k must match")
-  crit <- uniroot(f_crit, c(0.8, 1), k = k, alpha = alpha, rho_mat = rho_mat)$root
-  crit * qnorm(1 - k * 0.025)
+  crit <- uniroot(f_crit, crit_interval, k = k, alpha = alpha, rho_mat = rho_mat)$root
+  crit * qnorm(1 - k * alpha)
   
 }
 
