@@ -68,7 +68,8 @@ sim_func(scenarios = scenarios_cv, N_runs = 1e4, n_jobs = 200, k = c(0.5, 0.5), 
 set.seed(23524)
 sim_func(scenarios = scenarios, N_runs = 1e4, n_jobs = 200, k = c(0.6, 0.4), s_stars = c(1, 0.5))
 sim_func(scenarios = scenarios, N_runs = 1e4, n_jobs = 200, k = c(0.6, 0.4), s_stars = NULL, rhos = c(0,0), gammas = c(0,0.5))
-
+sim_func(scenarios = scenarios_cv, N_runs = 1e4, n_jobs = 200, k = c(0.6, 0.4), s_stars = c(1, 0.5))
+sim_func(scenarios = scenarios_cv, N_runs = 1e4, n_jobs = 200, k = c(0.6, 0.4), s_stars = NULL, rhos = c(0,0), gammas = c(0,0.5))
 ## -------------------------------------
 ## function to plot survival curves...
 ## -------------------------------------
