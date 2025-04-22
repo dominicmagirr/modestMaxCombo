@@ -55,7 +55,11 @@ sim_func <- function(scenarios, N_runs, n_jobs, k, s_stars, rhos = NULL, gammas 
     group_by(scenario) |> 
     summarise(power_test_1 = mean(z_1 < qnorm(0.025)), 
               power_test_2 = mean(z_2 < qnorm(0.025)), 
-              power_combo = mean(z_1 < c_1 | z_2 < c_2))
+              power_combo = mean(z_1 < c_1 | z_2 < c_2),
+              av_hr_rejected_combo = sum(hr * (z_1 < c_1 | z_2 < c_2)) / sum(z_1 < c_1 | z_2 < c_2),
+              av_hr_rejected_1 = sum(hr * (z_1 < qnorm(0.025))) / sum(z_1 < qnorm(0.025)),
+              av_hr_rejected_2 = sum(hr * (z_2 < qnorm(0.025))) / sum(z_2 < qnorm(0.025)),
+              med_hr_rejected_combo = median(ifelse(z_1 < c_1 | z_2 < c_2, hr, NA), na.rm = TRUE))
   
   
 }

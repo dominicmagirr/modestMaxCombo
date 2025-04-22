@@ -116,6 +116,7 @@ one_sim_result <- function(scenario,
   colnames(df) <- paste0("z_", seq_along(z))
   df_2 <- data.frame(t(-find_crit(cov2cor(cov_res$cov_mat), k = k, alpha = alpha)))
   colnames(df_2) <- paste0("c_", seq_along(z))
+  df_2$hr <- exp(survival::coxph(survival::Surv(event_time, event_status) ~ group, data = sim_data)$coef)
   cbind(df, df_2, data.frame(scenario = scenario$scenario))
   
   
